@@ -50,9 +50,11 @@ public class Tile : MonoBehaviour, ITile
 
     public IEnumerator DestroyTile(float destroyTime)
     {
+
         float time = 0;
         while(destroyTime > time)
         {
+            BlockRaycasts(false);
             yield return new WaitForEndOfFrame();
             tileCanvasGroup.alpha = (100 - (time / (destroyTime / 100))) / 100; 
             time += Time.deltaTime;
